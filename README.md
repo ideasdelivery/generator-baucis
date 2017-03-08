@@ -1,19 +1,19 @@
-# generator-saml-login [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-basic [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > SAML login iplementation with mongo.
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-saml-login using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-basic using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
-npm install -g generator-saml-login
+npm install -g generator-basic
 ```
 
 Then generate your new project:
 
 ```bash
-yo saml-login
+yo basic
 ```
 
 ## Getting To Know Yeoman
@@ -28,9 +28,9 @@ yo saml-login
 MIT © [ivanhuay]()
 
 
-[npm-image]: https://badge.fury.io/js/generator-saml-login.svg
-[npm-url]: https://npmjs.org/package/generator-saml-login
-[travis-image]: https://travis-ci.org/ideasdelivery/generator-saml-login.svg?branch=master
-[travis-url]: https://travis-ci.org/ideasdelivery/generator-saml-login
-[daviddm-image]: https://david-dm.org/ideasdelivery/generator-saml-login.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/ideasdelivery/generator-saml-login
+[npm-image]: https://badge.fury.io/js/generator-basic.svg
+[npm-url]: https://npmjs.org/package/generator-basic
+[travis-image]: https://travis-ci.org/ideasdelivery/generator-basic.svg?branch=master
+[travis-url]: https://travis-ci.org/ideasdelivery/generator-basic
+[daviddm-image]: https://david-dm.org/ideasdelivery/generator-basic.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/ideasdelivery/generator-basic
