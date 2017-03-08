@@ -13,7 +13,7 @@ npm install -g generator-baucis
 Then generate your new project:
 
 ```bash
-yo basic
+yo baucis
 ```
 
 ## Getting To Know Yeoman
