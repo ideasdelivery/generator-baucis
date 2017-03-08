@@ -1,13 +1,13 @@
-# generator-basic [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-baucis [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > SAML login iplementation with mongo.
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-basic using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-baucis using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
-npm install -g generator-basic
+npm install -g generator-baucis
 ```
 
 Then generate your new project:
@@ -28,9 +28,9 @@ yo basic
 MIT © [ivanhuay]()
 
 
-[npm-image]: https://badge.fury.io/js/generator-basic.svg
-[npm-url]: https://npmjs.org/package/generator-basic
-[travis-image]: https://travis-ci.org/ideasdelivery/generator-basic.svg?branch=master
-[travis-url]: https://travis-ci.org/ideasdelivery/generator-basic
-[daviddm-image]: https://david-dm.org/ideasdelivery/generator-basic.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/ideasdelivery/generator-basic
+[npm-image]: https://badge.fury.io/js/generator-baucis.svg
+[npm-url]: https://npmjs.org/package/generator-baucis
+[travis-image]: https://travis-ci.org/ideasdelivery/generator-baucis.svg?branch=master
+[travis-url]: https://travis-ci.org/ideasdelivery/generator-baucis
+[daviddm-image]: https://david-dm.org/ideasdelivery/generator-baucis.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/ideasdelivery/generator-baucis

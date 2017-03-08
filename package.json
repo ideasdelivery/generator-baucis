@@ -1,5 +1,5 @@
 {
-  "name": "generator-basic",
+  "name": "generator-baucis",
   "version": "0.0.0",
   "description": "SAML login iplementation with mongo.",
   "homepage": "",
@@ -43,7 +43,7 @@
       "mocha": true
     }
   },
-  "repository": "ideasdelivery/generator-basic",
+  "repository": "ideasdelivery/generator-baucis",
   "scripts": {
     "prepublish": "gulp prepublish",
     "test": "gulp"

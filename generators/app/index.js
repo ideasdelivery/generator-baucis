@@ -7,7 +7,7 @@ module.exports = Generator.extend({
   prompting: function() {
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the rad ' + chalk.red('generator-basic') + ' generator!'
+      'Welcome to the rad ' + chalk.red('generator-baucis') + ' generator!'
     ));
 
     var prompts = [{
