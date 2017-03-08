@@ -39,6 +39,18 @@ module.exports = Generator.extend({
       this.templatePath('_package.json'),
       this.destinationPath('package.json')
     );
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath('package.json'), {
+        name: this.props.name,
+        version: this.props.version,
+        private: this.props.private
+      }
+    );
+    this.fs.copy(
+      this.templatePath('basic-node-baucis/.*'),
+      this.destinationPath('./')
+    );
     this.fs.copy(
       this.templatePath('basic-node-baucis/*'),
       this.destinationPath('./')
