@@ -12,7 +12,8 @@ describe('generator-baucis:app', function () {
 
   it('creates files', function () {
     assert.file([
-      'package.json'
+      'package.json',
+      '.eslintrc'
     ]);
   });
 });
