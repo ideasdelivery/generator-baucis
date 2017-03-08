@@ -1,7 +1,7 @@
 {
   "name": "generator-baucis",
-  "version": "0.0.0",
-  "description": "SAML login iplementation with mongo.",
+  "version": "0.0.1",
+  "description": "Awesome Baucis api generator.",
   "homepage": "",
   "author": {
     "name": "ivanhuay",
@@ -43,7 +43,11 @@
       "mocha": true
     }
   },
-  "repository": "ideasdelivery/generator-baucis",
+  "repository": {
+        "type": "git",
+        "url": "git://github.com/ideasdelivery/generator-baucis",
+        "web": "https://github.com/ideasdelivery/generator-baucis"
+    },
   "scripts": {
     "prepublish": "gulp prepublish",
     "test": "gulp"
