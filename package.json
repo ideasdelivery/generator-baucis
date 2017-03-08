@@ -13,9 +13,10 @@
   ],
   "main": "generators/index.js",
   "keywords": [
-    "saml",
+    "baucis",
     "mongo",
-    "login",
+    "api",
+    "generator",
     "yeoman-generator"
   ],
   "dependencies": {
