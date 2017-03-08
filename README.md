@@ -1,5 +1,5 @@
 # generator-baucis [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> SAML login iplementation with mongo.
+> Awesome Baucis api generator.
 
 ## Installation
 
