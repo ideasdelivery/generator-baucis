@@ -8,8 +8,7 @@ const expressWinston = require('express-winston');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+const routes = require('./lib/routes');
 
 var app = express();
 
@@ -17,16 +16,16 @@ var app = express();
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(expressWinston.logger({
-  winstonInstance: logger,
-  expressFormat: true,
-  colorize: false,
-  meta: false,
-  statusLevels: true
+    winstonInstance: logger,
+    expressFormat: true,
+    colorize: false,
+    meta: false,
+    statusLevels: true
 }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+    extended: false
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -39,24 +38,25 @@ const buildBaucis = require('./build-baucis');
 const baucisInstance = buildBaucis();
 app.use('/api', baucisInstance);
 
-app.use('/', index);
-app.use('/users', users);
+Object.keys(routes).forEach((key) => {
+    app.use(routes[key]);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 app.use(function(err, req, res) {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500).json({
-    error: err
-  });
+    // render the error page
+    res.status(err.status || 500).json({
+        error: err
+    });
 });
 
 module.exports = app;

@@ -3,17 +3,20 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
-describe('generator-baucis:app', function () {
-  before(function () {
-    return helpers.run(path.join(__dirname, '../generators/app'))
-      .withPrompts({someAnswer: true})
-      .toPromise();
-  });
+describe('generator-baucis:app', function() {
+    before(function() {
+        return helpers.run(path.join(__dirname, '../generators/app'))
+            .withPrompts({
+                someAnswer: true
+            })
+            .toPromise();
+    });
 
-  it('creates files', function () {
-    assert.file([
-      'package.json',
-      '.eslintrc'
-    ]);
-  });
+    it('creates files', function() {
+        assert.file([
+            'package.json',
+            '.eslintrc',
+            'lib/models/index.js'
+        ]);
+    });
 });
