@@ -75,19 +75,19 @@ module.exports = Generator.extend({
             this.destinationPath('package.json')
         );
         this.fs.copy(
-            this.templatePath('basic-node-baucis/_env'),
+            this.templatePath('_env'),
             this.destinationPath('.env')
         );
         this.fs.copy(
-            this.templatePath('basic-node-baucis/_esformatter'),
+            this.templatePath('_esformatter'),
             this.destinationPath('.esformatter')
         );
         this.fs.copy(
-            this.templatePath('basic-node-baucis/_eslintrc'),
+            this.templatePath('_eslintrc'),
             this.destinationPath('.eslintrc')
         );
         this.fs.copy(
-            this.templatePath('basic-node-baucis/_gitignore'),
+            this.templatePath('_gitignore'),
             this.destinationPath('.gitignore')
         );
         this.fs.copyTpl(
