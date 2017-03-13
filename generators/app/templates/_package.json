@@ -19,6 +19,7 @@
     "mongoose": "^4.6.2",
     "mongoose-gridfs": "^0.1.0",
     "swagger-tools": "^0.10.1",
+    "cookie-parser": "^1.4.3",
     "winston": "^2.2.0"
   },
   "devDependencies": {
