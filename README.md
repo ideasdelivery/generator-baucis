@@ -23,6 +23,10 @@ yo baucis
  * Yeoman can be too opinionated at times but is easily convinced not to be.
  * Feel free to [learn more about Yeoman](http://yeoman.io/).
 
+## Support
+
+Node v4 or higger
+
 ## License
 
 MIT © [ivanhuay]()
