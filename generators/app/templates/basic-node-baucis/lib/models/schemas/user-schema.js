@@ -37,4 +37,12 @@ userSchema.methods.toJSON = function() {
     return obj;
 };
 
+userSchema.pre('save', function(next) {
+    var user = this;
+    if (user.isModified('password')) {
+        user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(8), null);
+    }
+    return next();
+});
+
 module.exports = userSchema;
