@@ -27,6 +27,9 @@ yo baucis
 
 Node v4 or higger
 
+## Options
+v0.1.0 or higger support jwt validation.
+
 ## License
 
 MIT © [ivanhuay]()

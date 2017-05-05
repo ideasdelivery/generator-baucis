@@ -7,7 +7,8 @@ describe('generator-baucis:app', function() {
     before(function() {
         return helpers.run(path.join(__dirname, '../generators/app'))
             .withPrompts({
-                someAnswer: true
+                createDirectory: false,
+                jwt:false
             })
             .toPromise();
     });
@@ -16,7 +17,30 @@ describe('generator-baucis:app', function() {
         assert.file([
             'package.json',
             '.eslintrc',
-            'lib/models/index.js'
+            'lib/models/schemas/user-schema.js',
+            'lib/models/index.js',
+            'lib/routes/index.js'
+        ]);
+    });
+});
+describe('generator-baucis:app with jwt option', function() {
+    before(function() {
+        return helpers.run(path.join(__dirname, '../generators/app'))
+            .withPrompts({
+                createDirectory: false,
+                jwt:true
+            })
+            .toPromise();
+    });
+
+    it('creates jwt files', function() {
+        assert.file([
+            'package.json',
+            '.eslintrc',
+            'lib/models/index.js',
+            'lib/routes/index.js',
+            'lib/routes/extract-jwt.js',
+            'lib/routes/auth.js'
         ]);
     });
 });

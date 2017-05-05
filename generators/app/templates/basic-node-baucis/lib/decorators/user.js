@@ -1,5 +1,4 @@
 'use strict';
-
 function userDecorator(controller) {
     controller.request('post', function(req, res, next) {
         if (!req.body.password) {
@@ -13,5 +12,4 @@ function userDecorator(controller) {
         next();
     });
 }
-
 module.exports = userDecorator;
