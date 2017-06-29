@@ -4,6 +4,8 @@ const path = require('path');
 // var favicon = require('serve-favicon');
 const logger = require('./lib/logger');
 const expressWinston = require('express-winston');
+const dotenv = require('dotenv');
+dotenv.load();
 
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -15,7 +17,13 @@ var app = express();
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-app.use(expressWinston.logger({winstonInstance: logger, expressFormat: true, colorize: false, meta: false, statusLevels: true}));
+app.use(expressWinston.logger({
+    winstonInstance: logger,
+    expressFormat: true,
+    colorize: false,
+    meta: false,
+    statusLevels: true
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));

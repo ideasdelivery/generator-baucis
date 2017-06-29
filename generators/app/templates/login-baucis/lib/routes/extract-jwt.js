@@ -1,6 +1,6 @@
 'use strict';
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = proccess.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 function getJwt(request) {
     var token;

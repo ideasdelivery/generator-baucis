@@ -2,6 +2,9 @@
 const express = require('express');
 const path = require('path');
 // var favicon = require('serve-favicon');
+const dotenv = require('dotenv');
+dotenv.load();
+
 const logger = require('./lib/logger');
 const expressWinston = require('express-winston');
 
@@ -9,7 +12,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const routes = require('./lib/routes');
-
 var app = express();
 
 // uncomment after placing your favicon in /public
