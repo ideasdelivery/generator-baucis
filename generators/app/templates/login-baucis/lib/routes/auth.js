@@ -4,7 +4,7 @@ const router = express.Router();
 const User = require('../models/user');
 const logger = require('../logger');
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = proccess.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 function validation(req, res, next) {
     if (!req.body.username || !req.body.password) {
