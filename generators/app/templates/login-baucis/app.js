@@ -51,14 +51,13 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-  app.use(function(err, req, res) {
-      res.locals.message = err.message;
-      res.locals.error = req.app.get('env') === 'development'
-          ? err
-          : {};
+app.use(function(err, req, res) {
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ?
+          err :
+          {};
 
-      // render the error page
-      res.status(err.status || 500).json({error: err});
-  });
+    res.status(err.status || 500).json({error: err});
+});
 
 module.exports = app;
