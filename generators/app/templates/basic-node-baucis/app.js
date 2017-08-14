@@ -34,7 +34,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Baucis configuration
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://' + process.env.MONGODB_HOST + ':' + process.env.MONGODB_PORT + '/' + process.env.MONGODB_DB);
+mongoose.connect('mongodb://' + process.env.MONGODB_HOST + ':' + process.env.MONGODB_PORT + '/' + process.env.MONGODB_DB, {useMongoClient:true})
+    .then(() => {
+        logger.info('success mongoose connection.');
+    })
+    .catch((error) => {
+        logger.error('Error mongoose connection: ', error);
+    });
+
 
 const buildBaucis = require('./build-baucis');
 const baucisInstance = buildBaucis();

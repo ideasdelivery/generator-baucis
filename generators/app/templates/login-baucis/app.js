@@ -1,8 +1,7 @@
 'use strict';
 const express = require('express');
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
 const path = require('path');
-// var favicon = require('serve-favicon');
 const logger = require('./lib/logger');
 const expressWinston = require('express-winston');
 const dotenv = require('dotenv');
@@ -28,12 +27,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 
 //Baucis configuration
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://' + process.env.MONGODB_HOST + ':' + process.env.MONGODB_PORT + '/' + process.env.MONGODB_DB);
-
+mongoose.connect('mongodb://' + process.env.MONGODB_HOST + ':' + process.env.MONGODB_PORT + '/' + process.env.MONGODB_DB, {useMongoClient:true})
+    .then(() => {
+        logger.info('success mongoose connection.');
+    })
+    .catch((error) => {
+        logger.error('Error mongoose connection: ', error);
+    });
+    
 app.use(/^\/(?!login)(?!signup).*/, extractJwt);
 
 const buildBaucis = require('./build-baucis');

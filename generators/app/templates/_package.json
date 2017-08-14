@@ -17,6 +17,7 @@
     "helmet": "^2.3.0",
     "jsonwebtoken": "^7.1.9",
     "mongoose": "^4.6.2",
+    "serve-favicon": "^2.4.3",
     "mongoose-gridfs": "^0.1.0",
     "swagger-tools": "^0.10.1",
     "cookie-parser": "^1.4.3",

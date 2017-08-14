@@ -6,8 +6,7 @@
 First, install [Yeoman](http://yeoman.io) and generator-baucis using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
-npm install -g yo
-npm install -g generator-baucis
+sudo npm i -g yo generator-baucis
 ```
 
 Then generate your new project:
@@ -27,8 +26,10 @@ yo baucis
 
 Node v4 or higger
 
-## Options
-v0.1.0 or higger support jwt validation.
+## Changelog
+
+* v0.1.5 - bugfix auth route and favico, update mongoose connection.
+* v0.1.0 or higger support jwt validation.
 
 ## License
 

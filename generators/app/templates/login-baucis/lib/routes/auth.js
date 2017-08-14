@@ -9,6 +9,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 function validation(req, res, next) {
     if (!req.body.username || !req.body.password) {
         res.status(400).json({error: 'missing params', code: 'missing_params', status: 'error'});
+        return;
     }
     next();
 }
