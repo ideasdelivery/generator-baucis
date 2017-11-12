@@ -52,6 +52,7 @@ module.exports = class extends Generator {
                 return this.prompt(prompts);
             }).then((props) => {
                 this.props = props;
+                return props;
             });
     }
     path() {

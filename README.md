@@ -22,6 +22,39 @@ yo baucis
  * Yeoman can be too opinionated at times but is easily convinced not to be.
  * Feel free to [learn more about Yeoman](http://yeoman.io/).
 
+## About the structure
+
+* The logic of your application should be contained in these folders:
+```
+lib/
+├── decorators
+│   ├── index.js
+│   └── user.js
+├── logger.js
+├── models
+│   ├── index.js
+│   ├── schemas
+│   │   └── user-schema.js
+│   └── user.js
+└── routes
+    ├── auth.js
+    ├── extract-jwt.js
+    ├── home.js
+    ├── index.js
+    └── users.js
+```
+* configuration:
+```
+config/
+└── public.js
+.env
+```
+
+### Custom routes, decorators models
+in each folder we can add new files but they must be exported in the index.js and match the decorator name with the mongoose models
+## Examples
+by default the generator provides sample files: models, decorators and custom routes
+
 ## Support
 
 Node v4 or higger
@@ -30,7 +63,7 @@ Node v4 or higger
 
 * v0.1.5 - bugfix auth route and favico, update mongoose connection.
 * v0.1.0 or higger support jwt validation.
-
+* v0.2.1 update yeoman generator, bugfix and remove unnecessary dependencies
 ## License
 
 MIT © [ivanhuay]()

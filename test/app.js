@@ -5,12 +5,18 @@ var helpers = require('yeoman-test');
 
 describe('generator-baucis:app', function() {
     before(function() {
+        this.timeout(100000);
         return helpers.run(path.join(__dirname, '../generators/app'))
             .withPrompts({
                 createDirectory: false,
-                jwt:false
+                jwt:false,
+                name:'test'
             })
-            .toPromise();
+            .toPromise()
+            .then(() => {
+                console.log('end');
+                return;
+            });
     });
 
     it('creates files', function() {
@@ -25,6 +31,7 @@ describe('generator-baucis:app', function() {
 });
 describe('generator-baucis:app with jwt option', function() {
     before(function() {
+        this.timeout(100000);
         return helpers.run(path.join(__dirname, '../generators/app'))
             .withPrompts({
                 createDirectory: false,

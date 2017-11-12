@@ -1,6 +1,6 @@
 {
   "name": "generator-baucis",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Awesome Baucis api generator.",
   "homepage": "",
   "author": {
@@ -36,7 +36,7 @@
     "gulp-nsp": "^2.1.0",
     "gulp-plumber": "^1.0.0",
     "yeoman-assert": "^2.2.1",
-    "yeoman-test": "^1.6.0"
+    "yeoman-test": "^1.7.0"
   },
   "eslintConfig": {
     "extends": "xo-space",
