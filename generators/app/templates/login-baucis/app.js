@@ -12,6 +12,7 @@ const bodyParser = require('body-parser');
 
 const routes = require('./lib/routes');
 const extractJwt = require('./lib/routes/extract-jwt');
+const publicPath = require('./config/public');
 var app = express();
 
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Baucis configuration
 const mongoose = require('mongoose');
+mongoose.Promise = Promise;
 mongoose.connect('mongodb://' + process.env.MONGODB_HOST + ':' + process.env.MONGODB_PORT + '/' + process.env.MONGODB_DB, {useMongoClient:true})
     .then(() => {
         logger.info('success mongoose connection.');
@@ -38,8 +40,8 @@ mongoose.connect('mongodb://' + process.env.MONGODB_HOST + ':' + process.env.MON
     .catch((error) => {
         logger.error('Error mongoose connection: ', error);
     });
-    
-app.use(/^\/(?!login)(?!signup).*/, extractJwt);
+
+app.use(publicPath.pathRegex, extractJwt);
 
 const buildBaucis = require('./build-baucis');
 const baucisInstance = buildBaucis();
@@ -51,18 +53,26 @@ Object.keys(routes).forEach((key) => {
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
+    let err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-app.use(function(err, req, res) {
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ?
-          err :
-          {};
-
-    res.status(err.status || 500).json({error: err});
+app.use(function(err, req, res, next) {
+    logger.error('handleError: ', err);
+    if (res.headersSent) {
+        next(err);
+        return;
+    }
+    let error = {};
+    error.status = err.status;
+    if(req.app.get('env') === 'development') {
+        error.message = err.message;
+        error.stack = err.stack;
+    }
+    res.status(err.status || 500).json({
+        error
+    });
 });
 
 module.exports = app;

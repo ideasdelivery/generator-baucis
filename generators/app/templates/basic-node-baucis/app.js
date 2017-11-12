@@ -53,18 +53,25 @@ Object.keys(routes).forEach((key) => {
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
+    let err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-app.use(function(err, req, res) {
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
+app.use(function(err, req, res, next) {
+    logger.error('handleError: ', err);
+    if (res.headersSent) {
+        next(err);
+        return;
+    }
+    let error = {};
+    error.status = err.status;
+    if(req.app.get('env') === 'development') {
+        error.message = err.message;
+        error.stack = err.stack;
+    }
     res.status(err.status || 500).json({
-        error: err
+        error
     });
 });
 

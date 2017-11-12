@@ -1,6 +1,6 @@
 {
   "name": "generator-baucis",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Awesome Baucis api generator.",
   "homepage": "",
   "author": {
@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "chalk": "^2.1.0",
-    "yeoman-generator": "^1.0.0",
+    "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.0"
   },
   "devDependencies": {

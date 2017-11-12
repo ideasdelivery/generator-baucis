@@ -25,10 +25,10 @@ router.post('/login', validation, (req, res) => {
             return;
         }
         Reflect.deleteProperty(user, 'password');
-        var token = jwt.sign(user);
+        var token = jwt.sign(user, JWT_SECRET);
         res.json({
             token
-        }, JWT_SECRET);
+        });
     }).catch((error) => {
         logger.error('findUserError: ', error);
         res.status(400).json({error: 'authentication error', code: 'authentication_failed'});
