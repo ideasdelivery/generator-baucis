@@ -16,7 +16,8 @@ gulp.task('static', function() {
 
 gulp.task('nsp', function(cb) {
     nsp({
-        package: path.resolve('package.json')
+        package: path.resolve('package.json'),
+        "exceptions": ["https://nodesecurity.io/advisories/157"] //related issue https://github.com/yeoman/generator/issues/1075
     }, cb);
 });
 
@@ -32,7 +33,7 @@ gulp.task('test', ['pre-test'], function(cb) {
             reporter: 'spec',
             exit:true
         }))
-        .on('error', (err) => {
+        .once('error', (err) => {
             console.error(err);
         });
 });
