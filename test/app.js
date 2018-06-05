@@ -2,7 +2,8 @@
 var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
-
+var nsp = require('nsp');
+var parameters = nsp.sanitizeParameters({});
 describe('generator-baucis:app', function() {
     before(function() {
         this.timeout(100000);
@@ -28,6 +29,17 @@ describe('generator-baucis:app', function() {
             'lib/routes/index.js'
         ]);
     });
+    it('should pass nsp check', function() {
+        parameters.path = path.resolve('package.json');
+        return nsp.check(parameters)
+            .then(function(response) {
+                assert.equal(response.message, 'No known vulnerabilities found');
+            })
+            .catch(function(errors) {
+                console.error('nsp error: ', errors);
+                assert.fail(errors);
+            });
+    });
 });
 describe('generator-baucis:app with jwt option', function() {
     before(function() {
@@ -49,5 +61,16 @@ describe('generator-baucis:app with jwt option', function() {
             'lib/routes/extract-jwt.js',
             'lib/routes/auth.js'
         ]);
+    });
+    it('should pass nsp check', function() {
+        parameters.path = path.resolve('package.json');
+        return nsp.check(parameters)
+            .then(function(response) {
+                return assert.equal(response.message, 'No known vulnerabilities found');
+            })
+            .catch(function(errors) {
+                console.error('nsp error: ', errors);
+                assert.fail(errors);
+            });
     });
 });
