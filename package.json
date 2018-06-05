@@ -1,6 +1,6 @@
 {
   "name": "generator-baucis",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Awesome Baucis api generator.",
   "homepage": "",
   "author": {
@@ -45,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://gitlab.com/gravadigital/generator-baucis",
+    "url": "https://gitlab.com/gravadigital/generator-baucis",
     "web": "https://gitlab.com/gravadigital/generator-baucis"
   },
   "scripts": {
