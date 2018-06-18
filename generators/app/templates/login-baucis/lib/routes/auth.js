@@ -24,8 +24,7 @@ router.post('/login', validation, (req, res) => {
             res.status(400).json({error: 'authentication failed!', code: 'authentication_failed'});
             return;
         }
-        Reflect.deleteProperty(user, 'password');
-        var token = jwt.sign(user, JWT_SECRET);
+        let token = jwt.sign(user.toJSON(), JWT_SECRET);
         res.json({
             token
         });
