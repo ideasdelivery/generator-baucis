@@ -14,13 +14,6 @@ gulp.task('static', function() {
         .pipe(eslint.failAfterError());
 });
 
-gulp.task('nsp', function(cb) {
-    nsp({
-        package: path.resolve('package.json'),
-        "exceptions": ["https://nodesecurity.io/advisories/157"] //related issue https://github.com/yeoman/generator/issues/1075
-    }, cb);
-});
-
 gulp.task('pre-test', function() {
     return gulp.src('generators/**/*.js')
         .pipe(excludeGitignore());
@@ -42,5 +35,4 @@ gulp.task('watch', function() {
     gulp.watch(['generators/**/*.js', 'test/**'], ['test']);
 });
 
-gulp.task('prepublish', ['nsp']);
 gulp.task('default', ['static', 'test']);

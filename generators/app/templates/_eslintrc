@@ -3,6 +3,12 @@
     "node": true,
     "es6": true
   },
+  "plugins": [
+    "security"
+  ],
+  "extends": [
+    "plugin:security/recommended"
+  ],
   "rules": {
     "brace-style": [2,"1tbs",{}],
     "camelcase": [2,{"properties":"never"}],
