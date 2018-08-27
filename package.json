@@ -1,6 +1,6 @@
 {
   "name": "generator-baucis",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "Awesome Baucis api generator.",
   "homepage": "",
   "author": {
@@ -28,7 +28,7 @@
     "eslint": "^4.19.1",
     "eslint-config-xo-space": "^0.15.0",
     "eslint-plugin-security": "^1.4.0",
-    "gulp": "^4.0.0",
+    "gulp": "^3.9.1",
     "gulp-eslint": "^3.0.1",
     "gulp-exclude-gitignore": "^1.0.0",
     "gulp-line-ending-corrector": "^1.0.1",
