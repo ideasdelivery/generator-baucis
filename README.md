@@ -33,15 +33,13 @@ lib/
 ├── logger.js
 ├── models
 │   ├── index.js
-│   ├── schemas
-│   │   └── user-schema.js
 │   └── user.js
 └── routes
-    ├── auth.js
-    ├── extract-jwt.js
-    ├── home.js
-    ├── index.js
-    └── users.js
+│   ├── auth.js
+│   └── index.js
+└── utils
+    └── middlewares
+        └── extract-jwt.js
 ```
 * configuration:
 ```

@@ -7,59 +7,80 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
 function validation(req, res, next) {
-    if (!req.body.username || !req.body.password) {
-        res.status(400).json({error: 'missing params', code: 'missing_params', status: 'error'});
-        return;
+    if (!req.body.email || !req.body.password) {
+        return res.status(400).json({
+            message: 'Missing params',
+            code: 'missing_params'
+        });
     }
-    next();
+    return next();
 }
 
-router.post('/login', validation, (req, res) => {
-    User.findOne({username: req.body.username}).then((user) => {
-        if (!user) {
-            res.status(400).json({error: 'user not found!', code: 'user_not_found'});
-            return;
-        }
-        if (!user.validPassword(req.body.password)) {
-            res.status(400).json({error: 'authentication failed!', code: 'authentication_failed'});
-            return;
-        }
-        let token = jwt.sign(user.toJSON(), JWT_SECRET);
-        res.json({
-            token
+router.post('/auth/login', validation, (req, res) => {
+    return User.findOne({email: req.body.email})
+        .then((user) => {
+            if (!user) {
+                return res.status(400).json({
+                    code: 'authentication_failed',
+                    message: 'User not found'
+                });
+            }
+            if (!user.validPassword(req.body.password)) {
+                return res.status(400).json({
+                    code: 'authentication_failed',
+                    message: 'Authentication failed!'
+                });
+            }
+            var token = jwt.sign(user.toJSON(), JWT_SECRET);
+            return res.status(200).json({
+                token
+            });
+        })
+        .catch((error) => {
+            logger.error('Login error: ', error.message);
+            return res.status(500).json({
+                message: 'Internal error',
+                code: 'internal_error'
+            });
         });
-    }).catch((error) => {
-        logger.error('findUserError: ', error);
-        res.status(400).json({error: 'authentication error', code: 'authentication_failed'});
-    });
 });
 
 function checkIfExist(req, res, next) {
-    User.count({username: req.body.username}).then((count) => {
+    return User.count({email: req.body.email}).then((count) => {
         if (count === 0) {
-            next();
-            return;
+            return next();
         }
-        res.status(400).json({error: 'username already in use!', code: 'username_alredy_used'});
+        return res.status(400).json({
+            message: 'email already in use!',
+            code: 'email_alredy_used'
+        });
     }).catch((error) => {
-        logger.error('countUserError: ', error);
+        logger.error('countUserError: ', error.message);
+        return res.status(500).json({
+            message: 'Internal error',
+            code: 'internal_error'
+        });
     });
 }
 
-router.post('/signup', validation, checkIfExist, (req, res) => {
-    var newUser = new User({
-        username: req.body.username,
+router.post('/auth/signup', validation, checkIfExist, (req, res) => {
+    const newUser = new User({
         full_name: req.body.fullname,
         password: req.body.password,
         email: req.body.email
     });
 
-    newUser.save().then(() => {
-        res.json({status: 'completed'});
-    }).catch((error) => {
-        logger.error('signupError', error);
-        res.status(400).json({error: 'save user error', code: 'save_error', status: 'error'});
-    });
+    return newUser.save()
+        .then(() => {
+            return res.status(201).json({});
+        })
+        .catch((error) => {
+            logger.error('signupError: ', error.message);
+            return res.status(500).json({
+                message: 'Internal error',
+                code: 'internal_error'
+            });
+        });
 });
 
 module.exports = router;

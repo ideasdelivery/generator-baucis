@@ -1,5 +1,5 @@
 'use strict';
-const publicPaths = ['login', 'signup'];
+const publicPaths = ['auth/*'];
 
 const prefix = '^\/';
 const pathRegexStr = prefix + publicPaths.map((path) => {

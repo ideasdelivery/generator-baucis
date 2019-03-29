@@ -10,5 +10,5 @@ IS_BEHIND_PROXY=false
 MONGODB_HOST=localhost
 MONGODB_PORT=27017
 MONGODB_DB=default
-JWT_SECRET=someSecret@ideas.delivery
+JWT_SECRET=someSecret@grava.digital
 NODE_ENV=develop

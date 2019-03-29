@@ -1,15 +1,9 @@
 'use strict';
 const mongoose = require('mongoose');
-const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
 
 const userSchema = new Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true
-    },
     full_name: {
         type: String
     },
@@ -32,4 +26,18 @@ userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 };
 
-module.exports = mongoose.model('User', UserSchema);
+userSchema.methods.toJSON = function() {
+    var obj = this.toObject();
+    Reflect.deleteProperty(obj, 'password');
+    return obj;
+};
+
+userSchema.pre('save', function(next) {
+    var user = this;
+    if (user.isModified('password')) {
+        user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(8), null);
+    }
+    return next();
+});
+
+module.exports = mongoose.model('User', userSchema);

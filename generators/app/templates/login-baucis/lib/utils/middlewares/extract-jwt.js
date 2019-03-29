@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
 function getJwt(request) {
-    var token;
+    let token;
     if (request.headers.authorization && request.headers.authorization.indexOf('Bearer') !== -1) {
         token = request.headers.authorization.replace('Bearer ', '');
     } else if (request.query && request.query.jwt) {
@@ -15,13 +15,13 @@ function getJwt(request) {
 function extractJwt(request, response, next) {
     jwt.verify(getJwt(request), JWT_SECRET, (err, decoded) => {
         if (err) {
-            response.status(401).json({
-                msg: 'unauthorized'
+            return response.status(401).json({
+                message: 'Uunauthorized',
+                code: 'unauthorized'
             });
-            return;
         }
         request.user = decoded;
-        next();
+        return next();
     });
 }
 

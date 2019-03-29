@@ -6,7 +6,7 @@ var yosay = require('yosay');
 module.exports = class extends Generator {
     prompting() {
         this.options = {};
-        this.log(yosay('Welcome to the rad ' + chalk.red('generator-baucis') + ' generator!'));
+        this.log(yosay('Welcome to the rad ' + chalk.red('generator-baucis') + ' generator V2!'));
         return this.prompt({
             type: 'confirm',
             name: 'createDirectory',
